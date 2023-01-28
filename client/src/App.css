@@ -1,0 +1,11 @@
+.container {
+  display: block;
+  background-color: blue;
+  margin: 20px;
+  color: white;
+}
+
+.post {
+  text-align: center;
+}
+
