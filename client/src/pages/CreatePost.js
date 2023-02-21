@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios"
 
 
 export default function CreatePost() {
   const [inputs, setInputs] = useState({});
+  const navigate = useNavigate()
+  
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -17,6 +20,7 @@ export default function CreatePost() {
     axios.post("http://localhost:3001/posts", inputs)
       .then((response) => {
         console.log("success")
+        navigate("/")
       })
 
   }
