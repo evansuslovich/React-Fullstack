@@ -19,15 +19,15 @@ export default function Post() {
 
   return (
     <div className="container">
-        <div className="header">
-          <h1>ID: {post.id}</h1>
-          <h1>Title: {post.title}</h1>
-        </div>
-
+      <div className="header">
+        <h1>ID: {post.id}</h1>
         <h1>Username: {post.username}</h1>
-        <h1>Text: {post.postText}</h1>
+      </div>
 
-        <br />
+      <h1>Title: {post.title}</h1>
+      <h1>Text: {post.postText}</h1>
+
+      <br />
     </div>
   )
 }
