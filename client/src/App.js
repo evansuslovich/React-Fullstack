@@ -1,6 +1,7 @@
 import React from "react";
 import Home from "./pages/Home";
 import CreatePost from "./pages/CreatePost";
+import UpdatePost from "./pages/UpdatePost"
 import Post from "./pages/Post";
 
 import {
@@ -18,7 +19,8 @@ function App() {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/createpost" element={<CreatePost />} />
-        <Route path="/post/:id" element = {<Post />} />
+        <Route path="/post/:id" element={<Post />} />
+        <Route path="/update/:id" element={<UpdatePost />} />
       </Routes>
     </div>
   );
