@@ -28,12 +28,25 @@ router.delete('/:id', async (req, res) => {
   res.json(listOfPosts)
 });
 
+router.put("/:id", async (req, res) => {
+  const id = req.params.id
+
+  const newTitle = req.body.title
+  const newText = req.body.postText
+
+  await Posts.update({title: newTitle,  postText: newText, }, { where: { id: id } });
+ 
+  const listOfPosts = await Posts.findAll()
+  res.json(listOfPosts);
+})
+
 
 router.post("/", async (req, res) => {
   const post = req.body;
   await Posts.create(post)
   res.json(post);
 });
+
 
 
 module.exports = router 
