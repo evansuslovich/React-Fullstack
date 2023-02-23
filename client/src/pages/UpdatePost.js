@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios"
 
@@ -14,6 +14,14 @@ export default function UpdatePost() {
     const value = event.target.value;
     setInputs(values => ({ ...values, [name]: value }))
   }
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/posts/" + id)
+      .then((response) => {
+        setInputs(response.data)
+      });
+  }, [])
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
