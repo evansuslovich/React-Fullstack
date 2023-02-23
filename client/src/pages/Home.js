@@ -21,28 +21,41 @@ function Home() {
   return (
     <div>
       <ul>
-        {listOfPosts.map((list, key) => {
+        {listOfPosts.map((post, key) => {
           return (
             <div className="container" key={key}>
-              <div className="post" onClick={() => {
-              }}>
+              <div className="post">
                 <div className="header">
-                  <h1>ID: {list.id}</h1>
-                  <h1>Title: {list.title}</h1>
+                  <h1>ID: {post.id}</h1>
+                  <h1>Username: {post.username}</h1>
                 </div>
 
-                <h1>Username: {list.username}</h1>
-                <h1>Text: {list.postText}</h1>
+                <h1>Title: {post.title}</h1>
+                <h1>Text: {post.postText}</h1>
+
+                <button onClick={() => {
+                  
+                  navigate("post/" + post.id)
+                }}>
+                  View
+                </button>
 
                 <button onClick={async () => {
                   navigate("/");
 
-                  await axios.delete("http://localhost:3001/posts/" + list.id).then((response) => {
+                  await axios.delete("http://localhost:3001/posts/" + post.id).then((response) => {
                     setListOfPosts(response.data)
                   })
                 }
                 }>
                   Delete
+                </button>
+
+                <button onClick={async () => {
+                  navigate("/update/" + post.id);
+                }
+                }>
+                  Update
                 </button>
 
                 <br />
