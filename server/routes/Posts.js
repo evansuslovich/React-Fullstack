@@ -9,23 +9,23 @@ router.get("/", async (req, res) => {
   res.json(listOfPosts)
 })
 
-router.get("/byId/:id", async (req,res) => {
+router.get("/:id", async (req,res) => {
   const id = req.params.id
   const post = await Posts.findByPk(id)
   res.json(post)
 })
 
 router.delete('/:id', async (req, res) => {
-
   const id = req.params.id
 
-  const post = await Posts.findByPk(id)
+  await Posts.destroy({
+    where: {
+      id: id
+    }
+  })
 
-  if(post != -1) {
-    await post.destroy()
-  }
-
-  res.json(post)
+  const listOfPosts = await Posts.findAll()
+  res.json(listOfPosts)
 });
 
 
@@ -36,4 +36,4 @@ router.post("/", async (req, res) => {
 });
 
 
-module.exports = router
+module.exports = router 
