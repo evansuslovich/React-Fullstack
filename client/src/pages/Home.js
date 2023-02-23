@@ -8,6 +8,7 @@ import "../App.css"
 
 function Home() {
   const [listOfPosts, setListOfPosts] = useState([])
+
   const navigate = useNavigate()
   useEffect(() => {
     axios.get("http://localhost:3001/posts")
@@ -16,6 +17,7 @@ function Home() {
       });
   }, [])
 
+
   return (
     <div>
       <ul>
@@ -23,7 +25,6 @@ function Home() {
           return (
             <div className="container" key={key}>
               <div className="post" onClick={() => {
-                navigate("/post/" + list.id);
               }}>
                 <div className="header">
                   <h1>ID: {list.id}</h1>
@@ -32,6 +33,17 @@ function Home() {
 
                 <h1>Username: {list.username}</h1>
                 <h1>Text: {list.postText}</h1>
+
+                <button onClick={async () => {
+                  navigate("/");
+
+                  await axios.delete("http://localhost:3001/posts/" + list.id).then((response) => {
+                    setListOfPosts(response.data)
+                  })
+                }
+                }>
+                  Delete
+                </button>
 
                 <br />
               </div>
