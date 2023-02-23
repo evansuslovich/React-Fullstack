@@ -4,6 +4,7 @@ import axios from "axios"
 
 
 export default function CreatePost() {
+
   const [inputs, setInputs] = useState({});
   const navigate = useNavigate()
   
