@@ -19,7 +19,6 @@ export default function CreatePost() {
 
     axios.post("http://localhost:3001/posts", inputs)
       .then((response) => {
-        console.log("success")
         navigate("/")
       })
 
