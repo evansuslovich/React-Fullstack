@@ -11,7 +11,7 @@ export default function Post() {
 
 
   useEffect(() => {
-    axios.get("http://localhost:3001/posts/byId/" + id)
+    axios.get("http://localhost:3001/posts/" + id)
       .then((response) => {
         setPost(response.data)
       })
